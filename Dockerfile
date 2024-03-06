@@ -8,6 +8,11 @@ FROM node:latest
 
 COPY --from=build /fakeroot/space /home/vsts_azpcontainer/.detaspace/bin/space
 
-RUN corepack enable && corepack prepare pnpm@latest-8 --activate && chmod o+rwx /home/vsts_azpcontainer/.detaspace/bin/space
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && \
+  apt-get upgrade -y && \
+  apt-get install -y sudo && \
+  corepack enable && corepack prepare pnpm@latest-8 --activate && \
+  chmod o+rwx /home/vsts_azpcontainer/
 
 LABEL "com.azure.dev.pipelines.agent.handler.node.path"="/usr/local/bin/node"
