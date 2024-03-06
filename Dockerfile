@@ -9,3 +9,5 @@ FROM node:latest
 COPY --from=build /fakeroot/space /root/.detaspace/bin/space
 
 RUN corepack enable && corepack prepare pnpm@latest-8 --activate
+
+LABEL "com.azure.dev.pipelines.agent.handler.node.path"="/usr/local/bin/node"
