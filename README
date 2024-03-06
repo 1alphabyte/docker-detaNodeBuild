@@ -1,0 +1,2 @@
+This is a docker image that has the basic tools to build a Node.js application, and deploy it to Deta's space.
+It is not intended to be used by anyone but myself.
