@@ -11,8 +11,6 @@ COPY --from=build /fakeroot/space /root/.detaspace/bin/space
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
   apt-get upgrade -y && \
-  apt-get install -y sudo && \
-  corepack enable && \
-  corepack prepare pnpm@latest-8 --activate
+  apt-get install -y sudo
 
 LABEL "com.azure.dev.pipelines.agent.handler.node.path"="/usr/local/bin/node"
